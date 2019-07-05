@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+#SimpleSalesforce
 
-You can use the [editor on GitHub](https://github.com/EdwardRushDeveloper/Salesforce/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Provides a simplistic use and use case using Salesfore Communities with a [Xamarin.Forms WebView](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/webview?tabs=windows).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The current Salesforce Reference links
 
-### Markdown
+* [OAuth 2.0 User-Agent Flow](https://help.salesforce.com/articleView?id=remoteaccess_oauth_user_agent_flow.htm&type=5)
+* [Scope Parameter Values](https://help.salesforce.com/articleView?id=remoteaccess_oauth_scopes.htm&type=5)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+At the time of this code writing the following are the screen shots from the documentation from the Salesforce Links above.
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+![OAuth 2.0 User-Agent Flow Image 1](OAuth2UserAgentFlow00.png "Screen Shot 1")
 
-- Bulleted
-- List
+![OAuth 2.0 User-Agent Flow Image 2](OAuth2UserAgentFlow01.png "Screen Shot 2")
 
-1. Numbered
-2. List
+![OAuth 2.0 User-Agent Flow Image 3](OAuth2UserAgentFlow02.png "Screen Shot 3")
 
-**Bold** and _Italic_ and `Code` text
+![OAuth 2.0 User-Agent Flow Image 4](OAuth2UserAgentFlow03.png "Screen Shot 4")
 
-[Link](url) and ![Image](src)
-```
+![OAuth 2.0 User-Agent Flow Image 5](OAuth2UserAgentFlow04.png "Screen Shot 5")
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![OAuth 2.0 User-Agent Flow Image 6](OAuth2UserAgentFlow05.png "Screen Shot 6")
 
-### Jekyll Themes
+![OAuth 2.0 User-Agent Flow Image 7](OAuth2UserAgentFlow06.png "Screen Shot 8")
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/EdwardRushDeveloper/Salesforce/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+**Scope Parameters Documentation**
 
-### Support or Contact
+![OAuth 2.0 User-Agent Scope Parameters Image 1](ScopeParameterValues.png "Screen Shot 9")
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
