@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Salesforce.SalesForceWebView">
+    
+   <ContentPage.Resources>
+  
+        <OnPlatform x:Key="ButtonMargin" x:TypeArguments="Thickness">
+               <On Platform="iOS" Value="5,5,5,5" />
+               <On Platform="Android" Value="5,5,5,5" />
+       </OnPlatform>
+        
+       <OnPlatform x:Key="ButtonRadius" x:TypeArguments="x:Single">
+            <On Platform="iOS" Value="5"/>
+            <On Platform="Android" Value="5"/>
+        </OnPlatform>
+        
+        <Style x:Key="ButtonStyle" TargetType="Button">
+             <Setter Property="Margin" Value="{StaticResource ButtonMargin}"/>
+             <Setter Property="BackgroundColor" Value="Orange"/>
+             <Setter Property="HeightRequest" Value="40" />
+             <Setter Property="BorderRadius" Value="{StaticResource ButtonRadius}"/>
+        </Style>
+    </ContentPage.Resources>    
+    <ContentPage.Content>
+        
+        
+           <Grid RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+            
+            <WebView Grid.Row="0" Grid.Column="0" x:Name="CommunitiesWebView" />
+            
+            <Button Grid.Row="1" 
+                    Grid.Column="0" 
+                    HeightRequest="50" 
+                    x:Name="WebViewButton" 
+                    Style="{StaticResource ButtonStyle}"
+                    Text="Start"
+                    Clicked="OnStartCall"
+                    > 
+            </Button>
+        </Grid>
+   
+        
+    </ContentPage.Content>
+</ContentPage>

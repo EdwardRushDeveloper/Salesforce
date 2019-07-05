@@ -1,0 +1,9 @@
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/bin/Debug/netstandard2.0/SimpleSalesforce.deps.json
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/bin/Debug/netstandard2.0/SimpleSalesforce.dll
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/bin/Debug/netstandard2.0/SimpleSalesforce.pdb
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.csproj.CoreCompileInputs.cache
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.AssemblyInfoInputs.cache
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.AssemblyInfo.cs
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.dll
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.pdb
+/Users/edwardrush/Documents/Projects/github/edward-rush-developer/Salesforce/SimpleSalesforce/obj/Debug/netstandard2.0/SimpleSalesforce.csprojAssemblyReference.cache
