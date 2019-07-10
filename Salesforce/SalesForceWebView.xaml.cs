@@ -11,12 +11,15 @@ namespace Salesforce
     public partial class SalesForceWebView : ContentPage
     {
 
-        RequestCallback _requestCallback = null;
-        ErrorCallback _errorParser = null;
+        AccessTokenResponseManager _requestCallback = null;
+        AccessTokenErrorResponse _errorParser = null;
 
-        string _nonce = string.Empty;
-        string _state = string.Empty;
-
+        string _nonce       = string.Empty;
+        string _state       = string.Empty;
+        string _clientId    = "<ClientId>";
+        //string _uri = "https://<salesforcelink>/services/oauth2/authorize";
+        string _authorizeUri = "https://<salesforcelink>/services/oauth2/authorize";
+        string _refreshUri   = "https://<salesforcelink>/services/oauth2/token";
         public SalesForceWebView()
         {
             InitializeComponent();
@@ -24,8 +27,8 @@ namespace Salesforce
             CommunitiesWebView.Navigated  += OnWebViewNavigated;
             CommunitiesWebView.Navigating += OnWebViewNavigating;
 
-             _requestCallback = new RequestCallback();
-            _errorParser = new ErrorCallback();
+             _requestCallback = new AccessTokenResponseManager();
+            _errorParser = new AccessTokenErrorResponse();
 
             _nonce = Guid.NewGuid().ToString("N").ToUpper();
             _state = Guid.NewGuid().ToString("N").ToUpper();
@@ -39,12 +42,17 @@ namespace Salesforce
             responseType.Add(SimpleSalesforce.Response_Type.id_token);
 
 
-            string uri = "https://<salesforcelink>/services/oauth2/authorize";
-            string clientId = "";
+ 
             string redirectUri = "finsmaaa://sflogin";
             
 
-            SimpleSalesforce.TokenRequest request = new SimpleSalesforce.TokenRequest(uri, responseType, clientId, redirectUri);
+            SimpleSalesforce.AccessTokenRequestParameters request = new SimpleSalesforce.AccessTokenRequestParameters
+                (
+                        _authorizeUri
+                        , responseType
+                        , _clientId
+                        , redirectUri
+                );
 
 
             List<SimpleSalesforce.Scope> scope = new List<SimpleSalesforce.Scope>();
@@ -90,7 +98,7 @@ namespace Salesforce
 
 
             //get our body of html from our page, and check to see if there are any errors per the Salesforce documentation
-            string javascriptExecution = ErrorCallback.ERROR_CHECKING_JAVASCRIPT;
+            string javascriptExecution = AccessTokenErrorResponse.ERROR_CHECKING_JAVASCRIPT;
             var result = await CommunitiesWebView.EvaluateJavaScriptAsync(javascriptExecution);
 
             //execute our expression tester to see if any errors are located.
@@ -122,11 +130,14 @@ namespace Salesforce
 
             if(parseResult)
             {
-                System.Diagnostics.Debug.Write(parseResult);
-                Device.OpenUri(new Uri("https://www.google.com"));
+                //System.Diagnostics.Debug.Write(parseResult);
+                //Device.OpenUri(new Uri("https://www.google.com"));
+                RefreshAccessTokenManager request = new RefreshAccessTokenManager(_refreshUri, _clientId, _requestCallback.refresh_token);
+
+                await request.RefreshAsync();
             }
 
-            e.Cancel = true;
+            //e.Cancel = true;
 
         }
     }

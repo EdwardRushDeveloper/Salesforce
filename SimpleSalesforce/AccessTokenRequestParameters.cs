@@ -8,7 +8,7 @@ using Newtonsoft.Json.Converters;
 
 namespace SimpleSalesforce
 {
-    public class TokenRequest
+    public class AccessTokenRequestParameters
     {
         /// <summary>
         ///  Salesforce Reference
@@ -33,7 +33,7 @@ namespace SimpleSalesforce
         /// <param name="clientId">Required for the Request</param>
         /// <param name="redirectUri">Required for the Request</param>
         [JsonConstructor()]
-        public TokenRequest(string Uri,List<Response_Type> response_Type, string clientId, string redirectUri)
+        public AccessTokenRequestParameters(string Uri,List<Response_Type> response_Type, string clientId, string redirectUri)
         {
             _uri = Uri;
             _responseType = response_Type;

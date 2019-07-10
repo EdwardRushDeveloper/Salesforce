@@ -13,7 +13,7 @@ namespace SimpleSalesforce
     /// This class will create the Regular Expression operations to parse the return GET URL
     /// and validate that it conforms to the Schema specified, and contains all the necessary parameters 
     /// </summary>
-    public class RequestCallback
+    public class AccessTokenResponseManager
     {
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace SimpleSalesforce
             scope
             token_type
        */
-        private RequestCallback()
+        private AccessTokenResponseManager()
         {
 
 
@@ -54,7 +54,7 @@ namespace SimpleSalesforce
         /// </summary>
         /// <param name="regularExpression">The regular expression to use if the default is not wanted</param>
         /// <param name="customSchema">The custom schema if the default is not wanted.</param>
-        public RequestCallback(string regularExpression = "", string customSchema = "", int propertyCount = 0)
+        public AccessTokenResponseManager(string regularExpression = "", string customSchema = "", int propertyCount = 0)
         {
 
             _regularExpression = string.IsNullOrEmpty(regularExpression) ? REGULAR_EXPRESSION : regularExpression;
@@ -82,8 +82,8 @@ namespace SimpleSalesforce
         string _regularExpression;
         string _customSchema;
 
-        string _accessToken;
-        string _refreshToken;
+        string _access_token;
+        string _refresh_token;
         string _instanceUrl;
         string _id;
         string _issuedAt;
@@ -96,6 +96,9 @@ namespace SimpleSalesforce
         string _tokenType;
 
         IdToken _IdToken;
+        AccessToken _accessToken;
+        RefreshToken _refreshToken;
+
         #endregion
 
 
@@ -106,13 +109,13 @@ namespace SimpleSalesforce
         /// Salesforce session ID that can be used with the web services API.
         /// </summary>
         [JsonProperty("access_token")]
-        public string access_token { get => _accessToken; set => _accessToken = value; }
+        public string access_token { get => _access_token; set => _access_token = value; }
         /// <summary>
         /// Token that can be used in the future to obtain new access tokens (sessions).
         /// This value is a secret. Treat it like the user’s password, and use appropriate measures to protect it.
         /// </summary>
         [JsonProperty("refresh_token")]
-        public string refresh_token { get => _refreshToken; set => _refreshToken = value; }
+        public string refresh_token { get => _refresh_token; set => _refresh_token = value; }
         /// <summary>
         /// A URL indicating the instance of the user’s org. For example: https://yourInstance.salesforce.com/.
         /// </summary>
@@ -192,7 +195,30 @@ namespace SimpleSalesforce
         [JsonProperty("IdToken")]
         public IdToken IdToken { get => _IdToken; set => _IdToken = value; }
 
+        /// <summary>
+        /// The Refresh Token Object used to Refresh the IdToken and the AccessToken
+        /// </summary>
+        public RefreshToken RefreshToken { get => _refreshToken; set => _refreshToken = value; }
+        /// <summary>
+        /// The Access Token used to query and update Salesforce.
+        /// </summary>
+        public AccessToken AccessToken { get => _accessToken; set => _accessToken = value; }
 
+
+        /// <summary>
+        /// Returns the 3 user tokens used in the Salesforce Operations.
+        /// </summary>
+        /// <returns>UserTokens</returns>
+        public UserTokens GetUserTokens()
+        {
+            UserTokens returnValue = new UserTokens();
+            returnValue.AccessToken = AccessToken;
+            returnValue.RefreshToken = RefreshToken;
+            returnValue.IdToken = IdToken;
+
+            return returnValue;
+
+        }
 
         #endregion
 
@@ -341,7 +367,9 @@ namespace SimpleSalesforce
                        _rawCallback = rawCallback;
 
 
-                        _IdToken = IdToken.GetIdToken(this._idToken);
+                        _IdToken      = IdToken.GetIdToken(this._idToken);
+                        _accessToken  = new AccessToken() { TokenValue = access_token };
+                        _refreshToken = new RefreshToken() { TokenValue = refresh_token };
 
                         returnValue = true;
                     }

@@ -28,7 +28,7 @@ namespace SimpleSalesForceTest
             string clientId    = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
             string redirectUri = "finsmaaa://sflogin";
 
-            SimpleSalesforce.TokenRequest request = new SimpleSalesforce.TokenRequest(uri,responseType, clientId, redirectUri);
+            SimpleSalesforce.AccessTokenRequestParameters request = new SimpleSalesforce.AccessTokenRequestParameters(uri,responseType, clientId, redirectUri);
 
 
             List<SimpleSalesforce.Scope> scope = new List<SimpleSalesforce.Scope>();

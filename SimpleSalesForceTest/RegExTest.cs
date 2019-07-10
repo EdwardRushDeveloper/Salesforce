@@ -24,7 +24,7 @@ namespace SimpleSalesForceTest
             string regularExpression = @"(?<SchemaName>finsmaaa:\/\/sflogin)|(?:(?:(?:(?:#|&)\b(?<PropertyName>access_token|refresh_token|instance_url|id|issued_at|signature|id_token|state|scope|token_type)\b))=(?<PropertyValue>[^& \n]+?)(?=$|&))";
             string source = @"finsmaaa://sflogin#access_token=";
 
-            RequestCallback _parser = new RequestCallback(regularExpression);
+            AccessTokenResponseManager _parser = new AccessTokenResponseManager(regularExpression);
             bool parseResult = _parser.Validate(source);
 
             Assert.AreEqual(true, true);

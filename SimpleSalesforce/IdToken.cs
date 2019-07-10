@@ -31,7 +31,7 @@ namespace SimpleSalesforce
         int _iat;
         string _family_name;
         string _email;
-
+        DateTime _createDateTime;
 
         string _idToken;
 
@@ -74,7 +74,9 @@ namespace SimpleSalesforce
         /// </summary>
         public IdToken()
         {
-         
+            //default the date and time for later access
+            //during deserialization, this will be overwritten.
+            CreateDateTime = DateTime.Now;
         }
 
 
@@ -168,12 +170,20 @@ namespace SimpleSalesforce
         /// </summary>
         public int iat { get => _iat; set => _iat = value; }
         /// <summary>
-        /// 
+        /// Usually the Last Name of the User
         /// </summary>
         public string family_name { get => _family_name; set => _family_name = value; }
         /// <summary>
-        /// 
+        /// The Email of the Current User.
         /// </summary>
         public string email { get => _email; set => _email = value; }
+
+        /// <summary>
+        /// The Date and Time this instance was created.
+        /// </summary>
+        public DateTime CreateDateTime { get => _createDateTime; set => _createDateTime = value; }
+
+   
+
     }
 }

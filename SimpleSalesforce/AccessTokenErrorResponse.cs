@@ -7,7 +7,7 @@ namespace SimpleSalesforce
     /// <summary>
     /// Class used to determine if any errors are returned from a Salesforce Call
     /// </summary>
-    public class ErrorCallback
+    public class AccessTokenErrorResponse
     {
 
 
@@ -36,7 +36,7 @@ namespace SimpleSalesforce
             \u003Chead>\u003C/head>\u003Cbody>\u003Cpre style=\"word-wrap: break-word; white-space: pre-wrap;\">error=redirect_uri_mismatch&amp;error_description=redirect_uri%20must%20match%20configuration\u003C/pre>\u003C/body>
 
         */
-        public ErrorCallback()
+        public AccessTokenErrorResponse()
         {
 
             _regexErrorCheck = new Regex(ERR0R_CHECK_EXPRESSION);
